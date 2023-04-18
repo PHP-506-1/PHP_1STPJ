@@ -41,7 +41,12 @@ $task_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <tbody>
             <?php foreach ($task_data as $data) { ?>
                 <tr>
-                    <td><?php echo htmlspecialchars($data['task_no']); ?></td> <!-- 데이터 출력 시 htmlspecialchars 함수를 사용하여 보안 이슈 방지 -->
+		<!-- 데이터 출력 시 htmlspecialchars 함수를 사용하여 보안 이슈 방지
+		문장내에 HTML코드가 들어가는 특수문자를 포함시켜 입력하고 화면으로 출력할 때,
+		HTML의 특수문자가 HTML태그로 적용되는 것이아니라 일반 문자로 인식되어 그대로 출력되게 해주는 역할이다.
+		바꾸는 문자로는 예시로
+		&는 &amp;로 바꾼다. "는 &quot;로 바꾼다. '는 &#039;로 바꾼다. <는 &lt로 바꾼다. >는 &gt로 바꾼다.-->
+                    <td><?php echo htmlspecialchars($data['task_no']); ?></td> 
                     <td><?php echo htmlspecialchars($data['task_date']); ?></td>
                     <td><?php echo htmlspecialchars($data['category_no']); ?></td>
                     <td><?php echo htmlspecialchars($data['task_title']); ?></td>

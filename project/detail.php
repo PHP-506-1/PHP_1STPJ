@@ -20,7 +20,10 @@
     <link href="./css/main.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<h1><?php echo $result_info["task_date"] ?></h1>
+<label for="date"></label>
+<input type="date" value="<?php echo $result_info["task_date"] ?>" readonly>
+
+<form>
 <div>
     <label for="start_time">시작시간 </label>
     <input type="time" value="<?php echo $result_info["start_time"] ?>" readonly>
@@ -42,10 +45,11 @@
     <label for="title">메모 </label>
     <input type="text" value="<?php echo $result_info["task_memo"] ?>" readonly>
 </div>
+</form>
 
 <div>
     <button type="button" onclick="location.href='update.php?task_no=<?php echo $result_info['task_no'] ?>'">수정</button>
-    <button type="button" onclick="location.href='list.php'">리스트</button>
+    <button type="button" onclick="location.href='index.php'">리스트</button>
 </div>
 
 </body>

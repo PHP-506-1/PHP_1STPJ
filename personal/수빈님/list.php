@@ -1,4 +1,8 @@
 <?php
+define("DOC_ROOT", $_SERVER["DOCUMENT_ROOT"] . "/");
+define("URL_DB", DOC_ROOT."/db/db_common.php");
+include_once(URL_DB);
+
 // DB 연결 객체 가져오기
 $db_conn = get_db_conn();
 if ( !$db_conn ) {

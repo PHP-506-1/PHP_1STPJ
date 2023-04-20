@@ -22,9 +22,10 @@
         $arr_post = $_POST;
         $arr_info= 
             array(
-                "task_date"	=> $arr_post["task_date"]
+                "task_no"       => $arr_post["task_no"]
+                ,"task_date"	=> $arr_post["task_date"]
                 ,"start_time"	=> $arr_post["start_time"]
-                ,"end_time"	=> $arr_post["end_time"]
+                ,"end_time" 	=> $arr_post["end_time"]
                 ,"task_title"	=> $arr_post["task_title"]
                 ,"is_com"		=> $arr_post["is_com"]
                 ,"task_memo"	=> $arr_post["task_memo"]
@@ -51,7 +52,7 @@
 <body>
 
 <form method="post" action="update.php" id="form">
-    <input type="hidden" value="<?php echo $result_info["task_no"] ?>">
+    <input type="hidden" value="<?php echo $result_info["task_no"] ?>" name="task_no">
     <label for="date"></label>
     <input type="date" value="<?php echo $result_info["task_date"] ?>" name="task_date">
 
@@ -90,7 +91,12 @@
     </div>
     <div>
         <label for="complete">수행여부 완료</label>
-        <input type="radio" value="1" <?php echo $result_info["is_com"]=="1" ? "checked" : "" ?> name="is_com">
+        <?php if ($result_info['is_com'] == '1') { ?>
+            <button type="button" class="checkbox_btn_com"></button>
+        <?php } else { ?>
+            <button type="button" class="checkbox_btn"></button>
+        <?php } ?>
+        <input type="hidden" name="is_com" value="<?php echo $result_info['is_com'] == '1' ? '0' : '1' ?>">
     </div>
     <div>
         <label for="title">메모 </label>
@@ -101,3 +107,6 @@
         <button type="button" onclick="location.href='index.php'">리스트</button>
     </div>
 </form>
+
+</body>
+</html>

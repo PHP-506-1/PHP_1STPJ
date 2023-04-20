@@ -30,5 +30,5 @@ foreach ($row1 as $avg) {
 }
 
 foreach ($result2 as $row2) {
-    echo $row2['category_name'] . ": " . $row2['num_count'] . "<br>";
+    echo "최근 한달간의 카테고리별 사용 횟수균: " . $row2['category_name'] . ": " . $row2['num_count'] . "<br>";
 }

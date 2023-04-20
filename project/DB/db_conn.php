@@ -132,7 +132,8 @@ function update_task_info_no( &$param_arr )
 	;
 	$arr_prepare =
 	array(
-		":task_date"	=> $param_arr["task_date"]
+		":task_no"		=> $param_arr["task_no"]
+		,":task_date"	=> $param_arr["task_date"]
 		,":start_time"	=> $param_arr["start_time"]
 		,":end_time"	=> $param_arr["end_time"]
 		,":task_title"	=> $param_arr["task_title"]
@@ -163,6 +164,7 @@ function update_task_info_no( &$param_arr )
 
 	return $result_cnt;
 }
+
 
 
 ?>

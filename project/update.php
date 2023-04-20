@@ -91,12 +91,8 @@
     </div>
     <div>
         <label for="complete">수행여부 완료</label>
-        <?php if ($result_info['is_com'] == '1') { ?>
-            <button type="button" class="checkbox_btn_com"></button>
-        <?php } else { ?>
-            <button type="button" class="checkbox_btn"></button>
-        <?php } ?>
-        <input type="hidden" name="is_com" value="<?php echo $result_info['is_com'] == '1' ? '0' : '1' ?>">
+        <input type="hidden" name="is_com" value="0">
+        <input type="checkbox" name="is_com" value="1" <?php echo $result_info['is_com'] == '1' ? 'checked' : '' ?>>
     </div>
     <div>
         <label for="title">메모 </label>

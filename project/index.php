@@ -11,54 +11,41 @@ if (!$db_conn) {
     throw new Exception("DB 연결에 실패했습니다.");
 }
 
-
 // 전체 데이터 수 가져오기
-// inner join으로 task와 category table join 하기
-$stmt = $db_conn->prepare('SELECT t.*, c.category_name FROM task t INNER JOIN category c ON t.category_no = c.category_no order by task_no DESC LIMIT :start_index, :page_data_count ');
-
-$stmt->bindParam(':start_index', $start_data_index, PDO::PARAM_INT);
-$stmt->bindParam(':page_data_count', $page_data_count, PDO::PARAM_INT);
-$stmt->execute();
-$task_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
 $total_data_count = $db_conn->query('SELECT COUNT(*) FROM task')->fetchColumn();
+
+// task table과 category table을 별도로 조회한 후 PHP에서 조합하여 출력
+$sql = 'SELECT t.*, c.category_name FROM task t, category c WHERE t.category_no = c.category_no ORDER BY task_no DESC LIMIT :page_data_count OFFSET :start_index';
+$stmt = $db_conn->prepare($sql);
 $page_data_count = 5; // 페이지당 보여줄 데이터 수
 $total_page_count = ceil($total_data_count / $page_data_count);
 
-// 현재 페이지 번호 구하기
+// 해당 페이지에 보여줄 데이터 구하기
 $current_page_no = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $current_page_no = max($current_page_no, 1); // 페이지 번호는 1 이상이어야 함
 $current_page_no = min($current_page_no, $total_page_count); // 페이지 번호는 전체 페이지 수 이하이어야 함
-
-// 해당 페이지에 보여줄 데이터 구하기
 $start_data_index = ($current_page_no - 1) * $page_data_count; // 페이지의 시작 데이터 인덱스
-$stmt = $db_conn->prepare('SELECT t.*, c.category_name FROM task t INNER JOIN category c ON t.category_no = c.category_no order by task_no DESC LIMIT :start_index, :page_data_count ');
 $stmt->bindParam(':start_index', $start_data_index, PDO::PARAM_INT);
 $stmt->bindParam(':page_data_count', $page_data_count, PDO::PARAM_INT);
 $stmt->execute();
 $task_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 //checked 시 수행 여부 업데이트
-function update_is_com($param_arr = array())
+function update_is_com($param_arr)
 {
-    $result_cnt = 0;
     $sql =
-        " UPDATE "
-        . " task "
-        . " SET "
-        . " is_com = :is_com "
-        . " WHERE "
-        . " task_no = :task_no ";
+        "UPDATE task
+        SET is_com = :is_com
+        WHERE task_no = :task_no";
 
-    $arr_prepare =
-        array(
-            ":is_com" => isset($param_arr["is_com"][0]) ? $param_arr["is_com"][0] : 0,
-            ":task_no" => isset($param_arr["task_no"][0]) ? $param_arr["task_no"][0] : 0
-        );
+    $arr_prepare = array(
+        ":is_com" => $param_arr["is_com"],
+        ":task_no" => $param_arr["task_no"]
+    );
 
-    $db_conn = null;
+    $db_conn = get_db_conn();
+
     try {
-        $db_conn = get_db_conn();
         $db_conn->beginTransaction();
         $stmt = $db_conn->prepare($sql);
         $stmt->execute($arr_prepare);
@@ -72,7 +59,6 @@ function update_is_com($param_arr = array())
             $db_conn = null;
         }
     }
-
     return $result;
 }
 
@@ -80,19 +66,18 @@ function update_is_com($param_arr = array())
 
 
 $http_method = $_SERVER["REQUEST_METHOD"];
-
+// $db_conn = get_db_conn();
 
 if ($http_method === "POST") {
     $arr_post = $_POST;
-    $is_com_old =
-        array(
-            "is_com" => $arr_post["is_com"],
-            "task_no" => $arr_post["task_no"][0]
-        );
-
+    $test1 = isset($arr_post["is_com"]) ? $arr_post["is_com"] : 0;
+    $test2 = isset($arr_post["task_no"]) ? $arr_post["task_no"] : 0;
+    $is_com_old = array(
+        "is_com" => $test1,
+        "task_no" => $test2
+    );
     $is_com = update_is_com($is_com_old);
 }
-
 
 
 // HTML 페이지에 표시할 코드 작성
@@ -132,21 +117,22 @@ if ($http_method === "POST") {
                     </thead>
                     <tbody>
                         <?php foreach ($task_data as $data) { ?>
-                            <tr <?php echo $data['is_com'] == '1' ? 'style="text-decoration:line-through;"' : ''; ?>>
-                                <!-- 데이터 출력 시 htmlspecialchars 함수를 사용하여 보안 이슈 방지
-                                문장내에 HTML코드가 들어가는 특수문자를 포함시켜 입력하고 화면으로 출력할 때,
-                                HTML의 특수문자가 HTML태그로 적용되는 것이아니라 일반 문자로 인식되어 그대로 출력되게 해주는 역할이다.
-                                바꾸는 문자로는 예시로
-                                &는 &amp;로 바꾼다. "는 &quot;로 바꾼다. '는 &#039;로 바꾼다. <는 &lt로 바꾼다. >는 &gt로 바꾼다.-->
-                                <td><?php echo htmlspecialchars($data['task_no']); ?></td>
-                                <td><?php echo htmlspecialchars($data['task_date']); ?></td>
-                                <td><?php echo htmlspecialchars($data['category_name']); ?></td>
-                                <td><?php echo htmlspecialchars($data['task_title']); ?></td>
-                                <!-- is_done 이 1이면 취소선 추가 -->
+                            <tr <?php echo $data['is_com'] == '1' ? 'class="completed"' : '' ?>>
+
+                                <td><a href="/project/detail.php?task_no=<?php echo $data["task_no"] ?>"><?php echo $data['task_no'] ?></a></td>
+                                <td><a href="/project/detail.php?task_no=<?php echo $data["task_no"] ?>"><?php echo $data['task_date'] ?></a></td>
+                                <td><a href="/project/detail.php?task_no=<?php echo $data["task_no"] ?>"><?php echo $data['category_name'] ?></a></td>
+                                <td><a href="/project/detail.php?task_no=<?php echo $data["task_no"] ?>"><?php echo $data['task_title'] ?></a></td>
+
                                 <td>
-                                    <form action="" method="post">
-                                        <input type="hidden" name="task_no[]" value="<?php echo $data['task_no']; ?>">
-                                        <input type="checkbox" name="is_com[]" value="1" <?php echo $data['is_com'] == '1' ? 'checked' : ''; ?> onchange="if(this.checked){this.value='1';}else{this.value='0';};this.form.submit();">
+                                    <form action="" method="POST">
+                                        <input type="hidden" name="task_no" value="<?php echo $data['task_no'] ?>">
+                                        <?php if ($data['is_com'] == '1') { ?>
+                                            <button class="checkbox_btn_com"></button>
+                                        <?php } else { ?>
+                                            <button class="checkbox_btn"></button>
+                                        <?php } ?>
+                                        <input type="hidden" name="is_com" value="<?php echo $data['is_com'] == '1' ? '0' : '1' ?>">
                                     </form>
                                 </td>
                             </tr>
@@ -187,8 +173,8 @@ if ($http_method === "POST") {
         </div>
     </div>
     <div class="btn-wrap">
-        <a href="" class="btn index1">그래프</a>
-        <a href="" class="btn index2">추가</a>
+        <a href="/project/graph.php" class="btn index1">그래프</a>
+        <a href="/project/write.php" class="btn index2">추가</a>
     </div>
 </body>
 

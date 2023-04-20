@@ -48,59 +48,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시글 수정페이지</title>
     <link href="./css/main.css" rel="stylesheet" type="text/css">
+    <link href="./css/detail.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-
-<form method="post" action="update.php" id="form">
-    <input type="hidden" value="<?php echo $result_info["task_no"] ?>" name="task_no">
-    <label for="date"></label>
-    <input type="date" value="<?php echo $result_info["task_date"] ?>" name="task_date">
-
-    <div>
-        <label for="start_time">시작시간 </label>
-        <input type="time" value="<?php echo $result_info["start_time"] ?>" name="start_time">
-        <label for="end_time">종료시간 </label>
-        <input type="time" value="<?php echo $result_info["end_time"] ?>" name="end_time">
+    <div class="sidebox">
+        <div class="top"></div>
+        <div class="bottom"></div>
     </div>
-    <div>
-        <label for="category">카테고리
-        <select name = "category_no">
-            <option value= 1>독서</option>
-            <option value= 2>운동</option>
-            <option value= 3>공부</option>
-            <option value= 4>기상</option>
-            <option value= 5>취미</option>
-            <option value= 6>회의</option>
-            <option value= 7>쇼핑</option>
-            <option value= 8>요리</option>
-            <option value= 9>청소</option>
-            <option value= 10>친구</option>
-            <option value= 11>가족</option>
-            <option value= 12>여행</option>
-            <option value= 13>영화</option>
-            <option value= 14>휴식</option>
-            <option value= 15>기타</option>
-            <option value= 16>병원</option>
-            <option value= 17>식사</option>
-        </select>
-        </label>
+    <div class="contianer">
+        <div class="title top">
+        <form method="post" action="update.php" id="form">
+            <input type="hidden" value="<?php echo $result_info["task_no"] ?>" name="task_no">
+            <label for="date"></label>
+            <input type="date" value="<?php echo $result_info["task_date"] ?>" name="task_date">
+        </div>
+        <div class="bottom">
+            <div class="listTable">
+                <ul>
+                    <li>
+                        <label for="start_time">시작시간 </label>
+                        <input type="time" value="<?php echo $result_info["start_time"] ?>" name="start_time">
+                    </li>
+                    <li>
+                        <label for="end_time">종료시간 </label>
+                        <input type="time" value="<?php echo $result_info["end_time"] ?>" name="end_time">
+                    </li>
+                    <li>
+                        <label for="category">카테고리
+                        <select name = "category_no">
+                        <option value= 1>독서</option>
+                        <option value= 2>운동</option>
+                        <option value= 3>공부</option>
+                        <option value= 4>기상</option>
+                        <option value= 5>취미</option>
+                        <option value= 6>회의</option>
+                        <option value= 7>쇼핑</option>
+                        <option value= 8>요리</option>
+                        <option value= 9>청소</option>
+                        <option value= 10>친구</option>
+                        <option value= 11>가족</option>
+                        <option value= 12>여행</option>
+                        <option value= 13>영화</option>
+                        <option value= 14>휴식</option>
+                        <option value= 15>기타</option>
+                        <option value= 16>병원</option>
+                        <option value= 17>식사</option>
+                        </select>
+                        </label>
+                    </li>
+                    <li>
+                        <label for="title">제목 </label>
+                        <input type="text" value="<?php echo $result_info["task_title"] ?>" name="task_title">
+                    </li>
+                    <li>
+                        <label for="complete">수행여부 완료</label>
+                        <input type="hidden" name="is_com" value="0">
+                        <input type="checkbox" name="is_com" value="1" <?php echo $result_info['is_com'] == '1' ? 'checked' : '' ?>>
+                    </li>
+                    <li>
+                        <label for="title">메모 </label>
+                        <input type="text" value="<?php echo $result_info["task_memo"] ?>" name="task_memo">
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
-    <div>
-        <label for="title">제목 </label>
-        <input type="text" value="<?php echo $result_info["task_title"] ?>" name="task_title">
-    </div>
-    <div>
-        <label for="complete">수행여부 완료</label>
-        <input type="hidden" name="is_com" value="0">
-        <input type="checkbox" name="is_com" value="1" <?php echo $result_info['is_com'] == '1' ? 'checked' : '' ?>>
-    </div>
-    <div>
-        <label for="title">메모 </label>
-        <input type="text" value="<?php echo $result_info["task_memo"] ?>" name="task_memo">
-    </div>
-    <div>
-        <button type="submit">저장</button>
-        <button type="button" onclick="location.href='index.php'">리스트</button>
+    <div class="btn-wrap">
+        <button type="button" onclick="location.href='index.php'" class="btn index2">리스트</button>
+        <button type="submit" class="btn index1">저장</button>
     </div>
 </form>
 

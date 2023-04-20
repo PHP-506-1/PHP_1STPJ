@@ -33,6 +33,23 @@ $sql2 = "SELECT category_name, COUNT(category_name) AS num_count
 $result2 = $conn->query($sql2);
 
 
+
+$sql3 = "SELECT 
+            (SELECT COUNT(*) FROM task WHERE is_com = '1') /
+            (SELECT COUNT(*) FROM task) AS completion_ratio";
+$result3 = $conn->query($sql3);
+$evalu = $result3->fetchall();
+
+// var_dump($result3);
+// $sql3 = " SELECT 
+// 	(SELECT COUNT(*) FROM task where is_com = '1')/
+// 	(SELECT COUNT(*) from task )";
+// $result3 = $conn->query($sql3);
+// $evalu = $result3->fetchAll();
+// $result_val = $evalu[0];
+
+
+
 // 결과 출력
 
 // foreach ($row1 as $avg) {
@@ -50,25 +67,54 @@ $result2 = $conn->query($sql2);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="project\CSS\main.css">
+    <link rel="stylesheet" href="project\CSS\write.css">
     <title>Document</title>
 </head>
 <body>
-    <thead>
-        <tr> 최근 한달간의 평균 기상시간:
-            <td>
-                <?php foreach ($row1 as $avg){ ?> 
-                <?php
-                echo gmdate("H:i:s", $avg["avg_start_time"]);
-                ?>
-                <?php } ?>
-                </tr>
-            </td>
-    최근 한달간의 주요 수행횟수 : <?php foreach ($result2 as $row2) { ?>
-    DO LIST: <?php echo $row2['category_name'] ?>
-    AVER COUNT : <?php echo $row2['num_count']?>
+    <ul>
+    <li> 최근 한달간의 평균 기상시간: <?php foreach ($row1 as $avg){ ?> <?php echo gmdate("H:i:s", $avg["avg_start_time"]);?> <?php } ?> </li>
+    </ul>
+    <ul>    
+    <li>최근 한달간의 수행횟수 <?php foreach ($result2 as $row2) { ?></li>
+    </ul>
+    <ul> 
+        <li>DO LIST: <?php echo $row2['category_name'] ?> </li> 
+        <li>AVER COUNT : <?php echo $row2['num_count']?> </li>
+    </ul>
     <?php }?>
-    </thead>
+    <br>
+    <ul>
+        <li>수행율: <?php foreach ($evalu as $completion_ratio) {  echo $completion_ratio['completion_ratio']* 100; }?> % </li>
+    </ul>
+            <?php 
+            if ($completion_ratio['completion_ratio']*100 >= 80) { 
+            ?>
+                <div class = "img"> <img src="./SOURCE/1.png" alt=""></div>
+            <?php
+            }
+            elseif ($completion_ratio['completion_ratio']*100 >= 70) { 
+            ?>
+                <div class = "img"> <img src="./SOURCE/2.png" alt=""></div>
+            <?php 
+            } 
+            elseif ($completion_ratio['completion_ratio']*100 >= 60) { 
+            ?>
+                <div class = "img"> <img src="./SOURCE/3.png" alt=""></div>
+            <?php
+            }
+            elseif ($completion_ratio['completion_ratio']*100 >= 50) { 
+            ?>
+                <div class = "img"> <img src="./SOURCE/4.png" alt=""></div>
+            <?php
+            }
+            else {
+            ?>
+                <div class = "img"> <img src="./SOURCE/5.png" alt=""></div>
+            <?php
+            }
+            ?>
 
-    </form>
+        
 </body>
 </html>

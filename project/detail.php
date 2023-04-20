@@ -20,10 +20,12 @@
     <link href="./css/main.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+
+<form method="post" action="" id="form">
+<input type="hidden" value="<?php echo $result_info["task_no"] ?>">
 <label for="date"></label>
 <input type="date" value="<?php echo $result_info["task_date"] ?>" readonly>
 
-<form>
 <div>
     <label for="start_time">시작시간 </label>
     <input type="time" value="<?php echo $result_info["start_time"] ?>" readonly>

@@ -22,13 +22,13 @@
         $arr_post = $_POST;
         $arr_info= 
             array(
-                ":task_date"	=> $param_arr["task_date"]
-                ,":start_time"	=> $param_arr["start_time"]
-                ,":end_time"	=> $param_arr["end_time"]
-                ,":task_title"	=> $param_arr["task_title"]
-                ,":is_com"		=> $param_arr["is_com"]
-                ,":task_memo"	=> $param_arr["task_memo"]
-                ,":category_no"	=> $param_arr["category_no"]
+                "task_date"	=> $arr_post["task_date"]
+                ,"start_time"	=> $arr_post["start_time"]
+                ,"end_time"	=> $arr_post["end_time"]
+                ,"task_title"	=> $arr_post["task_title"]
+                ,"is_com"		=> $arr_post["is_com"]
+                ,"task_memo"	=> $arr_post["task_memo"]
+                ,"category_no"	=> $arr_post["category_no"]
             );
             
 		// update
@@ -49,55 +49,55 @@
     <link href="./css/main.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<label for="date"></label>
-<input type="date" value="<?php echo $result_info["task_date"] ?>">
 
 <form method="post" action="update.php" id="form">
-<div>
-    <label for="start_time">시작시간 </label>
-    <input type="time" value="<?php echo $result_info["start_time"] ?>">
-    <label for="end_time">종료시간 </label>
-    <input type="time" value="<?php echo $result_info["end_time"] ?>">
-</div>
-<div>
-    <!-- <label for="category">카테고리 </label> <?php echo $result_info["category_name"] ?> -->
-    <label for="category">카테고리
-        <select>
-            <option value="">카테고리를 선택해 주세요</option>
-            <option value="book" id = "category">독서</option>
-            <option value="exer" id = "category">운동</option>
-            <option value="study" id = "category">공부</option>
-            <option value="wake" id = "category">기상</option>
-            <option value="hobby" id = "category">취미</option>
-            <option value="meeting" id = "category">회의</option>
-            <option value="shopping" id = "category">쇼핑</option>
-            <option value="cook" id = "category">요리</option>
-            <option value="clean" id = "category">청소</option>
-            <option value="friend" id = "category">친구</option>
-            <option value="family" id = "category">가족</option>
-            <option value="tuor" id = "category">여행</option>
-            <option value="movie" id = "category">영화</option>
-            <option value="rest" id = "category">휴식</option>
-            <option value="opt" id = "category">기타</option>
-            <option value="hospital" id = "category">병원</option>
-            <option value="eat" id = "category">식사</option>
+    <input type="hidden" value="<?php echo $result_info["task_no"] ?>">
+    <label for="date"></label>
+    <input type="date" value="<?php echo $result_info["task_date"] ?>" name="task_date">
+
+    <div>
+        <label for="start_time">시작시간 </label>
+        <input type="time" value="<?php echo $result_info["start_time"] ?>" name="start_time">
+        <label for="end_time">종료시간 </label>
+        <input type="time" value="<?php echo $result_info["end_time"] ?>" name="end_time">
+    </div>
+    <div>
+        <label for="category">카테고리
+        <select name = "category_no">
+            <option value= 1>독서</option>
+            <option value= 2>운동</option>
+            <option value= 3>공부</option>
+            <option value= 4>기상</option>
+            <option value= 5>취미</option>
+            <option value= 6>회의</option>
+            <option value= 7>쇼핑</option>
+            <option value= 8>요리</option>
+            <option value= 9>청소</option>
+            <option value= 10>친구</option>
+            <option value= 11>가족</option>
+            <option value= 12>여행</option>
+            <option value= 13>영화</option>
+            <option value= 14>휴식</option>
+            <option value= 15>기타</option>
+            <option value= 16>병원</option>
+            <option value= 17>식사</option>
         </select>
-    </label>
-</div>
-<div>
-    <label for="title">제목 </label>
-    <input type="text" value="<?php echo $result_info["task_title"] ?>">
-</div>
-<div>
-    <label for="complete">수행여부 완료</label>
-    <input type="radio" value="1" <?php echo $result_info["is_com"]=="1" ? "checked" : "" ?>>
-</div>
-<div>
-    <label for="title">메모 </label>
-    <input type="text" value="<?php echo $result_info["task_memo"] ?>">
-</div>
-<div>
-    <button type="submit">저장</button>
-    <button type="button" onclick="location.href='index.php'">리스트</button>
-</div>
+        </label>
+    </div>
+    <div>
+        <label for="title">제목 </label>
+        <input type="text" value="<?php echo $result_info["task_title"] ?>" name="task_title">
+    </div>
+    <div>
+        <label for="complete">수행여부 완료</label>
+        <input type="radio" value="1" <?php echo $result_info["is_com"]=="1" ? "checked" : "" ?> name="is_com">
+    </div>
+    <div>
+        <label for="title">메모 </label>
+        <input type="text" value="<?php echo $result_info["task_memo"] ?>" name="task_memo">
+    </div>
+    <div>
+        <button type="submit">저장</button>
+        <button type="button" onclick="location.href='index.php'">리스트</button>
+    </div>
 </form>

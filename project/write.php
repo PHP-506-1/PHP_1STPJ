@@ -88,7 +88,25 @@ function write_info(&$param_arr)
 <body>
     <div class="sidebox">
         <div class="top"></div>
-        <div class="bottom"></div>
+        <div class="bottom">
+            <div class="update">
+                <span>미라클 모닝 추천 루틴</span><br><br>
+                6:30 아침 기상 <br>
+                6:30~7:30 모닝 루틴 (1시간)<br><br>
+                - 요가 또는 스트레칭 15분<br>
+                - 명상 10분<br>
+                - 확신과 다짐의 말<br>
+                (목표 외치기) 5분<br>
+                - 시각화하기<br>
+                (머리 속에 비전과 일치된<br>
+                삶의 모습 그리기) 5분<br>
+                - 일기쓰기 15분<br>
+                - 독서 10분<br><br>
+                7:30~8:00 출근준비/샤워 등 (30분)<br>
+                8:00~8:30 걸어서 회사로 출근 (30분)<br>
+                8:30~9:00 아침 업무 준비 (30분)<br>
+            </div>
+        </div>
     </div>
     <div class="contianer">
     <div class="title top">

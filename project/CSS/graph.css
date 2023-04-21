@@ -100,8 +100,8 @@ td span
 	-o-transition: left .3s linear;
 	-webkit-transition: left .3s linear;
 	margin-left: -25px;
-  font-family: century gothic;
-  color: #666;
+	font-family: century gothic;
+	color: #666;
 }
 
 /*** Content ***/
@@ -109,16 +109,15 @@ td span
 .slider-container
 {
 	margin: 0 auto;
-	padding: 0;
+	padding: 20px;
 	width: 550px;
-  min-height: 180px;
-  border-bottom: 1px solid #ccc;
+	min-height: 180px;
 }
 
 .slider-container h4
 {
- 	color: #0A7FAD;
-  text-shadow: -1px 0px 0px rgba(0, 0, 0, 0.50);
+	color: #0A7FAD;
+	text-shadow: -1px 0px 0px rgba(0, 0, 0, 0.50);
 }
 
 .slider-container  p

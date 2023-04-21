@@ -150,13 +150,13 @@ td {
     margin: 0;
     width: 1.15em;
     height: 1.15em;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--index2-color);
     border-radius: 0.15em;
 }
 
 .checkbox_btn_com::after {
     content: 'v';
-    color: var(--border-color);
+    color: var(--index2-color);
     text-align: center;
     vertical-align: center;
 }

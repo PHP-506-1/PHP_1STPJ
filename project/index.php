@@ -105,7 +105,7 @@ if ($http_method === "POST") {
                     2) <span>확신</span>과 <span>다짐</span>의 말하기 - 잠재의식 프로그래밍<br>
                     3) <span>직관</span>의 <span>시각화</span> - 이상적인 하루와 나의 모습<br>
                     4) <span>아침 운동</span>하기 - 가장 좋아하고 몸 상태에 맞는<br>
-                    5) <span>독서</span>하기 -목적 독서<br>
+                    5) <span>독서</span>하기 - 목적 독서<br>
                     6) <span>기록</span>하기 - 아침 일기</p>
             </div>
         </div>

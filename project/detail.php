@@ -28,10 +28,8 @@ $result_info = select_task_info_no($arr_get["task_no"]);
         <div class="top"></div>
         <div class="bottom">
             <div class="update">
-                <img src="./source/door.png" id="img"><br><br>
-                '아침 10분은 밤 1시간만큼의 생산성과 가치가 있다'<br>
-                라는 말에서 알 수 있듯이 아침에 일찍 일어나는 것이<br>
-                얼마나 효율적인지는 알고 있을 것입니다.
+                <img src="./source/door.png" id="img"><br>
+                '아침 10분은 밤 1시간만큼의 생산성과 가치가 있다'라는 말에서 알 수 있듯이 아침에 일찍 일어나는 것이 얼마나 효율적인지는 알고 있을 것입니다.
             </div>
         </div>
     </div>
@@ -65,9 +63,9 @@ $result_info = select_task_info_no($arr_get["task_no"]);
                     <li>
                         <label for="complete">수행여부 완료</label>
                         <?php if ($result_info['is_com'] == '1') { ?>
-                            <button type="button" class="checkbox_btn_com" id="checkbox"></button>
+                            <button type="button" class="checkbox_btn_com" id="complete"></button>
                         <?php } else { ?>
-                            <button type="button" class="checkbox_btn" id="checkbox"></button>
+                            <button type="button" class="checkbox_btn" id="complete"></button>
                         <?php } ?>
                         <input type="hidden" name="is_com" value="<?php echo $result_info['is_com'] == '1' ? '0' : '1' ?>">
                     </li>

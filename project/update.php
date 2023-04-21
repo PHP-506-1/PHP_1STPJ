@@ -74,7 +74,7 @@
                         <input type="time" value="<?php echo $result_info["end_time"] ?>" name="end_time">
                     </li>
                     <li>
-                        <label for="category">카테고리
+                        <label for="category">카테고리 
                         <select name = "category_no">
                         <option value= 1>독서</option>
                         <option value= 2>운동</option>

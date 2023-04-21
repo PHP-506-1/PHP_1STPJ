@@ -75,16 +75,6 @@ body {
     justify-content: space-around;
 }
 
-.bottom p {
-    line-height: 50px;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-span {
-    color: var(--index1-color);
-}
-
 .contianer {
     border: 3px solid var(--border-color);
     width: 60%;

@@ -3,6 +3,7 @@ input
     border: none;
     outline: none;
     background-color: transparent;
+    font-size: medium;
 }
 
 select
@@ -10,6 +11,7 @@ select
     border: none;
     outline: none;
     background-color: transparent;
+    font-size: medium;
 }
 
 input[type="date"]
@@ -31,4 +33,5 @@ input[type="date"]
     border-bottom: 1px solid var(--border-color);
     padding: 20px;
     width: 100%;
+    font-size: large;
 }

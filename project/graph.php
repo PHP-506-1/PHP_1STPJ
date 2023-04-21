@@ -30,6 +30,7 @@ $sql2 = " SELECT category_name, COUNT(category_name) AS num_count
         FROM Category c
         JOIN Task t ON c.category_no = t.category_no
         WHERE task_date >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH)
+        AND c.category_name != '기상'
         GROUP BY c.category_name
         ORDER BY num_count DESC LIMIT 3 ";
 
@@ -93,11 +94,12 @@ $evalu = $result3->fetchall();
                 <tbody>
                     
                         <tr>
-                            <td>최근 한달간 평균 기상시간: <?php foreach ($row1 as $avg){ ?> <?php echo gmdate("H:i:s", $avg["avg_start_time"]);?> <?php } ?> </td>
+                            <td>최근 한달 평균 기상시간: </td>
+                            <td> <?php foreach ($row1 as $avg){ ?> <?php echo gmdate("H시 i분 s초", $avg["avg_start_time"]);?> <?php } ?></td>
                         </tr>
 
                         <tr>
-                            <td>최근 한달간 가장 많이 한 활동 TOP3 <?php $i = 1; foreach ($result2 as $row2) { ?>
+                            <td>최근 한달 활동 TOP3<span>(기상제외)</span> <?php $i = 1; foreach ($result2 as $row2) { ?>
                             </td>
                         </tr>
                         <tr>

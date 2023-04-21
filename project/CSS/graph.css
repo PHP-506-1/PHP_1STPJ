@@ -38,3 +38,7 @@ tr:last-child td:last-child {
 img{
     margin-right: 50px;
 }
+td span
+{
+    font-size: 14px;
+}

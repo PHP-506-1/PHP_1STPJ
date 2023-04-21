@@ -56,6 +56,11 @@ input[type="date"]
     margin-bottom: 70px;
 }
 
+.sun
+{
+    float:center;
+}
+
 .photo {
     width: 88%;
     height: 80%;

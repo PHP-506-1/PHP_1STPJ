@@ -27,14 +27,21 @@ $result_info = select_task_info_no($arr_get["task_no"]);
     <div class="sidebox">
         <div class="top"></div>
         <div class="bottom">
-            <div class="photo"></div>
+            <div class="update">
+                <img src="./source/door.png" id="img"><br><br>
+                '아침 10분은 밤 1시간만큼의 생산성과 가치가 있다'<br>
+                라는 말에서 알 수 있듯이 아침에 일찍 일어나는 것이<br>
+                얼마나 효율적인지는 알고 있을 것입니다.
+            </div>
         </div>
     </div>
     <div class="contianer">
         <div class="title top">
             <input type="hidden" value="<?php echo $result_info["task_no"] ?>" name="task_no">
-            <label for="date"></label>
-            <input type="date" value="<?php echo $result_info["task_date"] ?>" name="task_date" readonly>
+            <div class="sun">
+                <label for="date"></label><img src="./source/sun.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="date" value="<?php echo $result_info["task_date"] ?>" name="task_date" readonly><img src="./source/sun.png">
+            </div>
         </div>
         <div class="bottom">
             <div class="listTable">

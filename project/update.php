@@ -53,14 +53,26 @@
 <body>
     <div class="sidebox">
         <div class="top"></div>
-        <div class="bottom"></div>
+        <div class="bottom">
+            <div class="update">
+                매일 <span>아침</span> 눈뜨며 생각하자.<br><br>
+                오늘 <span>아침</span> 일어날 수 있으니<br>
+                이 얼마나 <span>행운</span>인가.<br><br>
+                나는 살아있고 소중한 <span>인생</span>을 가졌으니<br>
+                낭비하지 않을 것이다.<br><br>
+                나는 스스로를 <span>발전</span>시키고<br>
+                타인에게 나의 마음을 <span>확장</span>시켜 나가기 위해<br>
+                모든 기운을 쏟을 것이다.<br><br>
+                내 힘이 닿는 데까지 <span>타인</span>을 이롭게 할 것이다.
+            </div>  
+        </div>
     </div>
     <div class="contianer">
         <div class="title top">
         <form method="post" action="update.php" id="form">
             <input type="hidden" value="<?php echo $result_info["task_no"] ?>" name="task_no">
-            <label for="date"></label>
-            <input type="date" value="<?php echo $result_info["task_date"] ?>" name="task_date">
+            <label for="date"></label><img src="./source/sun.png">&nbsp;&nbsp;
+            <input type="date" value="<?php echo $result_info["task_date"] ?>" name="task_date">&nbsp;&nbsp;<img src="./source/sun.png">
         </div>
         <div class="bottom">
             <div class="listTable">

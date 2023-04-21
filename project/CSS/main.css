@@ -47,6 +47,8 @@ body {
     height: 100vh;
     display: flex;
     align-items: center;
+    min-width: 1200px;
+    min-height: 800px;
 }
 
 .sidebox {
@@ -223,4 +225,15 @@ td {
 
 .index2 {
     background-color: var(--index2-color);
+}
+
+.update {
+    line-height: 25px;
+    font-size: 20px;
+    border: 2px solid var(--index2-color);
+    padding: 20px;
+} 
+
+#img {
+    width: 400px;
 }

@@ -93,8 +93,8 @@ function write_info(&$param_arr)
     <div class="contianer">
     <div class="title top">
         <form method = "post" action = "">
-            <label for = "date_title">
-            <input type="date" name = "task_date" ></label>
+            <label for = "date_title"><img src="./source/sun.png">&nbsp;&nbsp;
+            <input type="date" name = "task_date" ></label>&nbsp;&nbsp;<img src="./source/sun.png">
         </div>
         <div class="bottom">
             <div class="listTable">

@@ -3,7 +3,7 @@ input
     border: none;
     outline: none;
     background-color: transparent;
-    font-size: medium;
+    font-size: large;
 }
 
 select
@@ -11,7 +11,8 @@ select
     border: none;
     outline: none;
     background-color: transparent;
-    font-size: medium;
+    font-size: large;
+    margin-left: 36px;
 }
 
 input[type="date"]
@@ -33,5 +34,24 @@ input[type="date"]
     border-bottom: 1px solid var(--border-color);
     padding: 20px;
     width: 100%;
-    font-size: large;
+    font-size: larger;
+}
+
+.listTable ul li input {
+    margin-left: 40px;
+}
+
+#checkbox
+{
+    margin-left: 5px;
+}
+
+#title, #memo
+{
+    margin-left: 71px;
+}
+
+#memo
+{
+    margin-bottom: 70px;
 }

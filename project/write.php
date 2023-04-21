@@ -132,11 +132,11 @@ function write_info(&$param_arr)
                     </li>
                     <li>
                         <label for ="task_title">제목 </label>
-                        <input type="text" name ="task_title">
+                        <input type="text" name ="task_title" id="title">
                     </li>
                     <li>
                         <label for ="task_memo">메모 </label>
-                        <input type="text" name = "task_memo">
+                        <input type="text" name = "task_memo" id="memo">
                     </li>
                 </ul>
             </div>

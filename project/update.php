@@ -98,16 +98,16 @@
                     </li>
                     <li>
                         <label for="title">제목 </label>
-                        <input type="text" value="<?php echo $result_info["task_title"] ?>" name="task_title">
+                        <input type="text" value="<?php echo $result_info["task_title"] ?>" name="task_title" id="title">
                     </li>
                     <li>
                         <label for="complete">수행여부 완료</label>
                         <input type="hidden" name="is_com" value="0">
-                        <input type="checkbox" name="is_com" value="1" <?php echo $result_info['is_com'] == '1' ? 'checked' : '' ?>>
+                        <input type="checkbox" name="is_com" value="1" <?php echo $result_info['is_com'] == '1' ? 'checked' : '' ?> id="checkbox">
                     </li>
                     <li>
-                        <label for="title">메모 </label>
-                        <input type="text" value="<?php echo $result_info["task_memo"] ?>" name="task_memo">
+                        <label for="memo">메모 </label>
+                        <input type="text" value="<?php echo $result_info["task_memo"] ?>" name="task_memo" id="memo">
                     </li>
                 </ul>
             </div>

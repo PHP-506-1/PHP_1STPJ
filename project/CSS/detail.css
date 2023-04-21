@@ -55,3 +55,14 @@ input[type="date"]
 {
     margin-bottom: 70px;
 }
+
+.photo {
+    width: 88%;
+    height: 80%;
+    border: 8px solid #fff;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    background-image: url('../SOURCE/detail_side.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}

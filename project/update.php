@@ -61,9 +61,9 @@
                 나는 살아있고 소중한 <span>인생</span>을 가졌으니<br>
                 낭비하지 않을 것이다.<br><br>
                 나는 스스로를 <span>발전</span>시키고<br>
-                타인에게 나의 마음을 <span>확장</span>시켜 나가기 위해<br>
-                모든 기운을 쏟을 것이다.<br><br>
-                내 힘이 닿는 데까지 <span>타인</span>을 이롭게 할 것이다.
+                타인에게 나의 마음을 <span>확장</span>시켜<br>
+                나가기 위해 모든 기운을 쏟을 것이다.<br><br>
+                내 힘이 닿는 데까지<span>타인</span>을 이롭게 할 것이다.
             </div>  
         </div>
     </div>
@@ -115,7 +115,7 @@
                     <li>
                         <label for="complete">수행여부 완료</label>
                         <input type="hidden" name="is_com" value="0">
-                        <input type="checkbox" name="is_com" value="1" <?php echo $result_info['is_com'] == '1' ? 'checked' : '' ?> id="checkbox">
+                        <input type="checkbox" name="is_com" value="1" <?php echo $result_info['is_com'] == '1' ? 'checked' : '' ?> id="complete">
                     </li>
                     <li>
                         <label for="memo">메모 </label>

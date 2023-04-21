@@ -86,7 +86,7 @@ $evalu = $result3->fetchall();
 </div>
 <div class = "contianer">
     <div class = "title top">
-        <h1>My Analytics</h1> 
+        <h1><img src="./source/sun.png" id="sun">&nbsp;&nbsp;My Analytics&nbsp;&nbsp;<img src="./source/sun.png" id="sun"></h1> 
     </div>
         <div class = "bottom">
             <div class="listTable">

@@ -82,7 +82,72 @@ $evalu = $result3->fetchall();
 <body>
 <div class="sidebox">
     <div class="top"></div>
-    <div class="bottom"></div>
+    <div class="bottom">
+        
+            <div id="slider">
+                <ul>
+                    <li>
+                    <div class="slider-container">
+                        <p>"하루의 시작은 아침에 결정된다. 아침에 마음을 다잡고</p> 
+                        <p> 열심히 하루를 시작하면 좋은 결과가 따를 것이다."</p>
+                        <p> - 드웨인 존슨 - </p>
+                    </div>
+                    </li>
+                    
+                    <li>
+                        <div class="slider-container">
+                        <p>"아침에 잘 시작하면 좋은 결실을 맺을 수 있다." </p>
+                        <p>- 이사야 토마스 - </p>
+                    </div>
+                    </li>
+                    
+                    <li>
+                        <div class="slider-container">
+                        <p>"아침 해를 보며 미소 짓는 것은 하루를</p>
+                        <p>  긍정적으로 시작하는 가장 좋은 방법이다."</p>
+                        
+                        <p> - 마크 트웨인 - </p>
+                    </div>
+                    </li>
+                    
+                    <li>
+                        <div class="slider-container">
+                        <p>"아침에 일찍 일어나는 것은 성공의 첫걸음이다."</p>
+                        <p> - 아리스토텔레스 - </p>
+                    </div>
+                    </li>
+                    <li>
+                        <div class="slider-container">
+                        <p>"아침에 일어나서 감사하는 마음으로 하루를 시작하면,</P>
+                        <p> 행복과 희망이 가득한 하루가 될 것이다."</p>
+                        <p> - 루이스 헤이 - </p>
+                    </div>
+                    </li>
+                    <li>
+                        <div class="slider-container">
+                        <p>"새로운 날은 새로운 시작을 의미한다. 아침은 어제의 실수를 바로잡고</p>
+                        <p> 더 나은 삶을 시작할 수 있는 시간이다."</p>
+                        <p> - 스티브 마를렛 - </p>
+                    </div>
+                    </li>
+                    <li>
+                        <div class="slider-container">
+                        <p>"새벽에 눈을 뜨면 하루를 더 살아갈 수 있는 특별한 선물을 받은 것이다."</P>
+                        <p> - 이자크 바쉐비스 싱어 - </p>
+                    </div>
+                    </li>
+                    <li>
+                        <div class="slider-container">
+                        <p>"사람의 삶은 매일 아침에 새롭게 시작된다." </p>
+                        <p> - 레프 톨스토이 - </p>
+                    </div>
+                    </li>
+                </ul>
+               
+        </div>
+        <div class="photo"></div>
+         <!-- <img src="./SOURCE/arrow1.png" alt=""> -->
+    </div>
 </div>
 <div class = "contianer">
     <div class = "title top">

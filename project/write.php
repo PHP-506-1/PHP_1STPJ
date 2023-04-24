@@ -40,10 +40,11 @@ if ($http_method === "POST") {
 
 <body>
     <div class="sidebox">
-        <div class="top"></div>
+        <div class="top">
+            <h1><span>미라클 모닝 추천 루틴</span><h1>
+        </div>
         <div class="bottom">
             <div class="update">
-                <span>미라클 모닝 추천 루틴</span><br><br>
                 6:30 아침 기상 <br>
                 6:30~7:30 모닝 루틴 (1시간)<br><br>
                 - 요가 또는 스트레칭 15분<br>

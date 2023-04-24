@@ -5,94 +5,31 @@ define("URL_DB", DOC_ROOT . "project/DB/db_conn.php");
 include_once(URL_DB);
 
 // DB 연결 객체 가져오기
-$db_conn = get_db_conn();
+db_conn($db_conn);
 if (!$db_conn) {
     // DB 연결 실패 시, 예외 발생
     throw new Exception("DB 연결에 실패했습니다.");
 }
 
-// // 전체 데이터 수 가져오기
-// $total_data_count = $db_conn->query('SELECT COUNT(*) FROM task')->fetchColumn();
-
-// // task table과 category table을 별도로 조회한 후 PHP에서 조합하여 출력
-// $sql = 'SELECT t.*, c.category_name FROM task t, category c WHERE t.category_no = c.category_no ORDER BY task_no DESC LIMIT :page_data_count OFFSET :start_index';
-// $stmt = $db_conn->prepare($sql);
-// $page_data_count = 5; // 페이지당 보여줄 데이터 수
-// $total_page_count = ceil($total_data_count / $page_data_count);
-
-// // 해당 페이지에 보여줄 데이터 구하기
-// $current_page_no = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-// $current_page_no = max($current_page_no, 1); // 페이지 번호는 1 이상이어야 함
-// $current_page_no = min($current_page_no, $total_page_count); // 페이지 번호는 전체 페이지 수 이하이어야 함
-// $start_data_index = ($current_page_no - 1) * $page_data_count; // 페이지의 시작 데이터 인덱스
-// $stmt->bindParam(':start_index', $start_data_index, PDO::PARAM_INT);
-// $stmt->bindParam(':page_data_count', $page_data_count, PDO::PARAM_INT);
-// $stmt->execute();
-// $task_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-function get_task_data($db_conn, $page_data_count = 5) {
-    // 전체 데이터 수 가져오기
-    $total_data_count = $db_conn->query('SELECT COUNT(*) FROM task')->fetchColumn();
-
-    $total_page_count = ceil($total_data_count / $page_data_count);
-    
-    // 해당 페이지에 보여줄 데이터 구하기
-    $current_page_no = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-    $current_page_no = max($current_page_no, 1); // 페이지 번호는 1 이상이어야 함
-    $current_page_no = min($current_page_no, $total_page_count); // 페이지 번호는 전체 페이지 수 이하이어야 함
-    $start_data_index = ($current_page_no - 1) * $page_data_count; // 페이지의 시작 데이터 인덱스
-    
-    // task table과 category table을 별도로 조회한 후 PHP에서 조합하여 출력
-    $sql = 'SELECT t.*, c.category_name FROM task t, category c WHERE t.category_no = c.category_no ORDER BY task_no DESC LIMIT :page_data_count OFFSET :start_index';
-    $stmt = $db_conn->prepare($sql);
-    $stmt->bindParam(':start_index', $start_data_index, PDO::PARAM_INT);
-    $stmt->bindParam(':page_data_count', $page_data_count, PDO::PARAM_INT);
-    $stmt->execute();
-    $task_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
-    return array(
-        'task_data' => $task_data,
-        'total_data_count' => $total_data_count,
-        'total_page_count' => $total_page_count,
-        'current_page_no' => $current_page_no,
-        'start_data_index' => $start_data_index
-    );
-}
 
 
-//checked 시 수행 여부 업데이트
-function update_is_com($param_arr)
-{
-    $sql =
-        "UPDATE task
-        SET is_com = :is_com
-        WHERE task_no = :task_no";
 
-    $arr_prepare = array(
-        ":is_com" => $param_arr["is_com"],
-        ":task_no" => $param_arr["task_no"]
-    );
+$page_data_count = 5;
 
-    $db_conn = get_db_conn();
+// 전체 페이지 수 계산
+$total_page_count = ceil($total_data_count / $page_data_count);
 
-    try {
-        $db_conn->beginTransaction();
-        $stmt = $db_conn->prepare($sql);
-        $stmt->execute($arr_prepare);
-        $result = $stmt->rowCount();
-        $db_conn->commit();
-    } catch (Exception $e) {
-        $db_conn->rollback();
-        return $e->getMessage();
-    } finally {
-        if ($db_conn !== null) {
-            $db_conn = null;
-        }
-    }
-    return $result;
-}
+// 해당 페이지에 보여줄 데이터 구하기
+$current_page_no = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$current_page_no = max($current_page_no, 1); // 페이지 번호는 1 이상이어야 함
+$current_page_no = min($current_page_no, $total_page_count); // 페이지 번호는 전체 페이지 수 이하이어야 함
 
+// 페이지의 시작 데이터 인덱스
+$start_data_index = ($current_page_no - 1) * $page_data_count;
 
+// 함수 호출
+$list_page_fnc = list_page($start_data_index, $page_data_count);
+// var_dump($list_page_fnc);
 
 
 $http_method = $_SERVER["REQUEST_METHOD"];
@@ -157,7 +94,7 @@ if ($http_method === "POST") {
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($task_data as $data) { ?>
+                        <?php foreach ($list_page_fnc as $data) { ?>
                             <tr <?php echo $data['is_com'] == '1' ? 'class="completed"' : '' ?>>
 
                                 <td><a href="/project/detail.php?task_no=<?php echo $data["task_no"] ?>"><?php echo $data['task_no'] ?></a></td>

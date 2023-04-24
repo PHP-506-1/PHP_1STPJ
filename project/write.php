@@ -88,7 +88,7 @@ function write_info(&$param_arr)
 <body>
     <div class="sidebox">
         <div class="top">
-        <h1><span>미라클 모닝 추천 루틴</span><h1>
+        <h1>미라클 모닝 <span>추천 루틴</span><h1>
         </div>
         <div class="bottom">
             <div class="update">

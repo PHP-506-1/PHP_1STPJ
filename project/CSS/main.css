@@ -233,7 +233,7 @@ td {
     font-size: 20px;
     border: 2px solid var(--index2-color);
     padding: 20px;
-    max-width: 85%;
+    min-height: 880px;
     text-align: center;
 } 
 

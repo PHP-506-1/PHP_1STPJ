@@ -58,7 +58,7 @@ if ($http_method === "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>미라클 모닝</title>
     <!-- favicon -->
-    <link rel="icon" href="./SOURCE/sun2.png">
+    <link rel="shortcut icon" href="./SOURCE/sun2.png">
     <!-- css 링크 -->
     <link rel="stylesheet" href="./css/main.css">
 </head>

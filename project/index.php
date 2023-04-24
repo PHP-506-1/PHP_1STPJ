@@ -57,6 +57,11 @@ if ($http_method === "POST") {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>미라클 모닝</title>
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./SOURCE/favicon_io">
+    <link rel="icon" type="image/png" sizes="32x32" href="./SOURCE/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./SOURCE/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="./SOURCE/favicon_io/site.webmanifest">
     <!-- css 링크 -->
     <link rel="stylesheet" href="./css/main.css">
 </head>
@@ -79,7 +84,7 @@ if ($http_method === "POST") {
     </div>
     <div class="contianer">
         <div class="title top">
-            <h1><img src="./source/sun.png">  MIRACLE MORNING  <img src="./source/sun.png"></h1>    
+            <h1><img src="./source/sun.png"> MIRACLE MORNING <img src="./source/sun.png"></h1>
         </div>
         <div class="bottom">
             <div class="listTable">

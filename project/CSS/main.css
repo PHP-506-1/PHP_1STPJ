@@ -27,6 +27,7 @@
     box-sizing: border-box;
     color: var(--font-color);
     font-family: 'Dovemayo_gothic';
+    cursor: url(../SOURCE/clover.png), auto;
 }
 
 

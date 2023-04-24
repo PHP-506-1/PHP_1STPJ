@@ -15,63 +15,6 @@ if ( $http_method === "POST" )
 }
 
 
-//DB에 입력될 데이터 레코드를 입력하는 sql문
-function write_info(&$param_arr)
-{
-    $sql = " INSERT INTO task( "
-        ." task_date "
-        ." ,start_time "
-        ." ,end_time "
-        ." ,task_title "
-        // ." ,is_com "
-        ." ,task_memo "
-        ." ,category_no "
-        ." ) "
-
-        ." VALUES ( " 
-        ." :task_date "
-        ." ,:start_time "
-        ." ,:end_time "
-        ." ,:task_title "
-        // ." ,:is_com "
-        ." ,:task_memo "
-        ." ,:category_no "
-        ." ) "
-        ;
-// prepare로 데이터들의 배열을 입력
-        $arr_prepare = 
-        array(
-            ":task_date" => $param_arr["task_date"]
-            ,":start_time" => $param_arr["start_time"]
-            ,":end_time" => $param_arr["end_time"]
-            ,":task_title" => $param_arr["task_title"]
-            // ,":is_com" => $param_arr["is_com"]
-            ,":task_memo" => $param_arr["task_memo"]
-            ,":category_no" => $param_arr["category_no"]
-        );
-
-
-        $db_conn = null;
-        try 
-        {
-            $db_conn= get_db_conn(); //PDO object 셋
-            $db_conn->beginTransaction(); //Transaction 시작 : 데이터를 변경하기(insert, update, delete) 때문에 일련의 연산이 완료되면 commit 실패시 rollback을 통해서 데이터를 관리 하게 시킨다. 
-            $stmt = $db_conn->prepare( $sql ); //statement object 셋팅
-            $stmt->execute( $arr_prepare ); //DB request
-            $result_cnt = $stmt->rowCount(); // 업데이트 되서 영향을 받은 행의 숫자를 가져온다.
-            $db_conn->commit();
-            
-        } 
-        catch ( Exception $e) 
-        {
-            $db_conn->rollback(); // 트랜잭션이 진행중에 오류가 나면 롤백을 시켜서 돌려 준다.
-            return $e->getMessage();
-        }
-        finally //성공여부와 상관없이 null로 커넥션을 초기화 시켜준다.
-        {
-            $db_conn = null;
-        }
-}
 
 ?>
 
@@ -113,7 +56,7 @@ function write_info(&$param_arr)
     <div class="title top">
         <form method = "post" action = "">
             <label for = "date_title"><img src="./source/sun.png">&nbsp;&nbsp;
-            <input type="date" name = "task_date" reqired></label>&nbsp;&nbsp;<img src="./source/sun.png">
+            <input type="date" name = "task_date" data-placeholder = " 날짜를 선택해주세요."  reqired></label>&nbsp;&nbsp;<img src="./source/sun.png">
         </div>
         <div class="bottom">
             <div class="listTable">

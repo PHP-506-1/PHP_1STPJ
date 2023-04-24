@@ -112,22 +112,22 @@ function write_info(&$param_arr)
     <div class="title top">
         <form method = "post" action = "">
             <label for = "date_title"><img src="./source/sun.png">&nbsp;&nbsp;
-            <input type="date" name = "task_date" ></label>&nbsp;&nbsp;<img src="./source/sun.png">
+            <input type="date" name = "task_date" reqired></label>&nbsp;&nbsp;<img src="./source/sun.png">
         </div>
         <div class="bottom">
             <div class="listTable">
                 <ul>
                     <li>
                         <label for="start_time">시작시간 </label>
-                        <input type="time" name = "start_time" >
+                        <input type="time" name = "start_time" reqired>
                     </li>
                     <li>
                         <label for="end_time">종료시간 </label>
-                        <input type="time" name = "end_time" >
+                        <input type="time" name = "end_time" reqired>
                     </li>
                     <li>
                         <label for ="category">카테고리 
-                        <select name = "category_no">
+                        <select name = "category_no" reqired>
                             <option value= 1 >독서</option>
                             <option value= 2 >운동</option>
                             <option value= 3 >공부</option>
@@ -150,7 +150,7 @@ function write_info(&$param_arr)
                     </li>
                     <li>
                         <label for ="task_title">제목 </label>
-                        <input type="text" name ="task_title" id="title">
+                        <input type="text" name ="task_title" id="title" reqired>
                     </li>
                     <li>
                         <label for ="task_memo">메모 </label>

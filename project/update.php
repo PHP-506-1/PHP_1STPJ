@@ -72,22 +72,22 @@
         <form method="post" action="update.php" id="form">
             <input type="hidden" value="<?php echo $result_info["task_no"] ?>" name="task_no">
             <label for="date"></label><img src="./source/sun.png">&nbsp;&nbsp;
-            <input type="date" value="<?php echo $result_info["task_date"] ?>" name="task_date">&nbsp;&nbsp;<img src="./source/sun.png">
+            <input type="date" value="<?php echo $result_info["task_date"] ?>" name="task_date" reqired>&nbsp;&nbsp;<img src="./source/sun.png">
         </div>
         <div class="bottom">
             <div class="listTable">
                 <ul>
                     <li>
                         <label for="start_time">시작시간 </label>
-                        <input type="time" value="<?php echo $result_info["start_time"] ?>" name="start_time">
+                        <input type="time" value="<?php echo $result_info["start_time"] ?>" name="start_time" reqired>
                     </li>
                     <li>
                         <label for="end_time">종료시간 </label>
-                        <input type="time" value="<?php echo $result_info["end_time"] ?>" name="end_time">
+                        <input type="time" value="<?php echo $result_info["end_time"] ?>" name="end_time" reqired>
                     </li>
                     <li>
                         <label for="category">카테고리 
-                        <select name = "category_no">
+                        <select name = "category_no" reqired>
                         <option value= 1>독서</option>
                         <option value= 2>운동</option>
                         <option value= 3>공부</option>
@@ -110,7 +110,7 @@
                     </li>
                     <li>
                         <label for="title">제목 </label>
-                        <input type="text" value="<?php echo $result_info["task_title"] ?>" name="task_title" id="title">
+                        <input type="text" value="<?php echo $result_info["task_title"] ?>" name="task_title" id="title" reqired>
                     </li>
                     <li>
                         <label for="complete">수행여부 완료</label>

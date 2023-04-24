@@ -124,8 +124,8 @@ if ($http_method === "POST") {
             <ul class="paging-wrap">
                 <li><a href="<?php echo $_SERVER['PHP_SELF'] . '?page=1' ?>">◀◀</a></li>
                 <?php
-                $start_page = floor(($current_page_no - 1) / $page_data_count) * $page_data_count + 1; // 시작 페이지 계산
-                $end_page = $start_page + floor(($current_page_no - 1)); // 끝 페이지 계산
+                $start_page = floor(($current_page_no - 1) / 5) * 5 + 1; // 시작 페이지 계산
+                $end_page = $start_page + 4; // 끝 페이지 계산
                 $end_page = min($end_page, $total_page_count); // 끝 페이지가 전체 페이지 수보다 많으면 전체 페이지 수로 설정
 
                 if ($current_page_no >= 1) {

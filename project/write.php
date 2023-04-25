@@ -105,7 +105,7 @@ if ($http_method === "POST") {
                     </li>
                     <li>
                         <label for="task_memo">메모 </label>
-                        <textarea name="task_memo" id="memo" cols="30" rows="10"></textarea>
+                        <input type="text" name="task_memo" id="memo">
                     </li>
                 </ul>
             </div>

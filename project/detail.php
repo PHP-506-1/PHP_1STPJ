@@ -77,8 +77,8 @@ $result_info = select_task_info_no($arr_get["task_no"]);
                         <input type="hidden" name="is_com" value="<?php echo $result_info['is_com'] == '1' ? '0' : '1' ?>">
                     </li>
                     <li>
-                        <label for="memo">메모 </label>
-                        <input type="text" value="<?php echo $result_info["task_memo"] ?>" id="memo" name="task_memo" readonly>
+                        <label for="task_memo" id="memo">메모 </label>
+                        <textarea name="task_memo" id="task_memo" cols="30" rows="10" placeholder="<?php echo $result_info["task_memo"] ?>" readonly></textarea>
                     </li>
                 </ul>
             </div>

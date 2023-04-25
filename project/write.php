@@ -104,8 +104,8 @@ if ($http_method === "POST") {
                         <input type="text" name="task_title" id="title" required>
                     </li>
                     <li>
-                        <label for="task_memo">메모 </label>
-                        <input type="text" name="task_memo" id="memo">
+                        <label for="task_memo" id="memo">메모 </label>
+                        <textarea name="task_memo" id="task_memo" cols="30" rows="10"></textarea>
                     </li>
                 </ul>
             </div>

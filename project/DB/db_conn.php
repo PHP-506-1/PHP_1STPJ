@@ -129,6 +129,7 @@ function list_page($start_data_index, $page_data_count)
 // ---------------------------------
 function select_task_info_no( &$param_no )
 {
+    // task 테이블, category 테이블 값을 표시하는 쿼리
 	$sql =
 		" SELECT "
 		."	ts.task_no "
@@ -146,6 +147,7 @@ function select_task_info_no( &$param_no )
 		."	ts.task_no = :task_no "
 		;
 
+        // task_no로 매칭
 	$arr_prepare =
 		array(
 			":task_no"	=> $param_no
@@ -154,18 +156,18 @@ function select_task_info_no( &$param_no )
 	$conn = null;
 	try
 	{
-		db_conn( $conn );
-		$stmt = $conn->prepare( $sql );
-		$stmt->execute( $arr_prepare );
+		db_conn( $conn ); // PDO object set(DB연결)
+		$stmt = $conn->prepare( $sql ); // statement object set
+		$stmt->execute( $arr_prepare ); // DB request
 		$result = $stmt->fetchAll();
 	}
 	catch( Exception $e )
 	{
-		return $e->getMessage();
+		return $e->getMessage(); // DB연결 실패시 메세지 표시
 	}
 	finally
 	{
-		$conn = null;
+		$conn = null; // PDO 파기
 	}
 
 	return $result[0]; // 조건을 PK로 걸어줘서, 리턴값이 1개만 있기 때문에 [0]을 적어줌.

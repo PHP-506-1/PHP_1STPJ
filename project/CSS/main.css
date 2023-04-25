@@ -27,6 +27,7 @@
     box-sizing: border-box;
     color: var(--font-color);
     font-family: 'Dovemayo_gothic';
+    cursor: url(../SOURCE/clover.png), auto;
 }
 
 
@@ -49,8 +50,6 @@ body {
     align-items: center;
     min-width: 1200px;
     min-height: 880px;
-    cursor: url(../SOURCE/clover.png), auto;
-
 }
 
 .sidebox {

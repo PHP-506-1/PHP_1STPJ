@@ -25,11 +25,13 @@ else {
     // update
     $result_cnt = update_task_info_no($arr_info);
 
+    // 저장 후 상세페이지로 돌아감
     header("Location: detail.php?task_no=" . $arr_post["task_no"]);
-    exit(); // 36행에서 redirect 했기 때문에 이후의 소스코드는 실행할 필요가 없다.
+    exit();
 }
 ?>
 
+<!-- HTML 페이지에 표시할 코드 작성 -->
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -39,10 +41,7 @@ else {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시글 수정페이지</title>
     <!-- favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="./SOURCE/favicon_io">
-    <link rel="icon" type="image/png" sizes="32x32" href="./SOURCE/favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./SOURCE/favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="./SOURCE/favicon_io/site.webmanifest">
+    <link rel="shortcut icon" href="./SOURCE/sun2.png">
     <!-- css -->
     <link href="./css/main.css" rel="stylesheet" type="text/css">
     <link href="./css/detail.css" rel="stylesheet" type="text/css">
@@ -52,6 +51,7 @@ else {
     <div class="sidebox">
         <div class="top"></div>
         <div class="bottom">
+            <!-- 사이드 부분 이미지, 글 -->
             <div class="update">
                 매일 <span>아침</span> 눈뜨며 생각하자.<br><br>
                 오늘 <span>아침</span> 일어날 수 있으니<br>
@@ -68,6 +68,7 @@ else {
     <div class="contianer">
         <div class="title top">
             <form method="post" action="update.php" id="form">
+                <!-- 히든 값으로 task_no를 받아와서 매칭 시켜줌 -->
                 <input type="hidden" value="<?php echo $result_info["task_no"] ?>" name="task_no">
                 <label for="date"></label><img src="./source/sun.png">&nbsp;&nbsp;
                 <input type="date" value="<?php echo $result_info["task_date"] ?>" name="task_date" reqired>&nbsp;&nbsp;<img src="./source/sun.png">
@@ -84,6 +85,7 @@ else {
                         <input type="time" value="<?php echo $result_info["end_time"] ?>" name="end_time" reqired>
                     </li>
                     <li>
+                        <!-- select로 카테고리 값 선택 -->
                         <label for="category">카테고리
                             <select name="category_no" reqired>
                                 <option value=1>독서</option>
@@ -116,8 +118,8 @@ else {
                         <input type="checkbox" name="is_com" value="1" <?php echo $result_info['is_com'] == '1' ? 'checked' : '' ?> id="complete">
                     </li>
                     <li>
-                    <label for="memo" id="memo_label">메모 </label>
-                    <textarea name="taks_memo" id="memo" cols="30" rows="10" value="<?php echo $result_info["task_memo"] ?>"></textarea>
+                        <label for="memo" id="memo_label">메모 </label>
+                        <textarea name="taks_memo" id="memo" cols="30" rows="10" value="<?php echo $result_info["task_memo"] ?>"></textarea>
                     </li>
                 </ul>
             </div>

@@ -1,4 +1,5 @@
 <?php
+//수 DOC_ROOT와 URL_DB를 정의하고, URL_DB를 이용하여 db_conn.php를 include
 define("DOC_ROOT", $_SERVER["DOCUMENT_ROOT"] . "/");
 define("URL_DB", DOC_ROOT . "project/DB/db_conn.php");
 
@@ -7,7 +8,7 @@ include_once(URL_DB);
 // DB 연결 객체 가져오기
 db_conn($db_conn);
 if (!$db_conn) {
-    // DB 연결 실패 시, 예외 발생
+    // DB 연결 실패 시, 예외 throw
     throw new Exception("DB 연결에 실패했습니다.");
 }
 
@@ -20,7 +21,7 @@ $page_data_count = 5;
 $total_page_count = ceil($total_data_count / $page_data_count);
 
 // 해당 페이지에 보여줄 데이터 구하기
-$current_page_no = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$current_page_no = isset($_GET['page']) ? (int)$_GET['page'] : 1; //현재 페이지 번호를 $_GET['page']에서 받아옴
 $current_page_no = max($current_page_no, 1); // 페이지 번호는 1 이상이어야 함
 $current_page_no = min($current_page_no, $total_page_count); // 페이지 번호는 전체 페이지 수 이하이어야 함
 
@@ -29,12 +30,12 @@ $start_data_index = ($current_page_no - 1) * $page_data_count;
 
 // 함수 호출
 $list_page_fnc = list_page($start_data_index, $page_data_count);
-// var_dump($list_page_fnc);
 
-
+//HTTP 메소드 판별
 $http_method = $_SERVER["REQUEST_METHOD"];
-// $db_conn = get_db_conn();
 
+
+//HTTP 메소드가 "POST"일 경우, is_com과 task_no를 가져와서 update_is_com 함수를 호출
 if ($http_method === "POST") {
     $arr_post = $_POST;
     $test1 = isset($arr_post["is_com"]) ? $arr_post["is_com"] : 0;
@@ -96,15 +97,17 @@ if ($http_method === "POST") {
                         </tr>
                     </thead>
                     <tbody>
+                        <!-- 테이블로 데이터 출력하는 foreach문 -->
                         <?php foreach ($list_page_fnc as $data) { ?>
                             <tr <?php echo $data['is_com'] == '1' ? 'class="completed"' : '' ?>>
-
-                                <td><a href="/project/detail.php?task_no=<?php echo $data["task_no"] ?>"><?php echo $data['task_no'] ?></a></td>
-                                <td><a href="/project/detail.php?task_no=<?php echo $data["task_no"] ?>"><?php echo $data['task_date'] ?></a></td>
-                                <td><a href="/project/detail.php?task_no=<?php echo $data["task_no"] ?>"><?php echo $data['category_name'] ?></a></td>
-                                <td><a href="/project/detail.php?task_no=<?php echo $data["task_no"] ?>"><?php echo $data['task_title'] ?></a></td>
-
+                                
+                            <td><a href="/project/detail.php?task_no=<?php echo $data["task_no"] ?>"><?php echo $data['task_no'] ?></a></td>
+                            <td><a href="/project/detail.php?task_no=<?php echo $data["task_no"] ?>"><?php echo $data['task_date'] ?></a></td>
+                            <td><a href="/project/detail.php?task_no=<?php echo $data["task_no"] ?>"><?php echo $data['category_name'] ?></a></td>
+                            <td><a href="/project/detail.php?task_no=<?php echo $data["task_no"] ?>"><?php echo $data['task_title'] ?></a></td>
+                            
                                 <td>
+                                    <!-- is_com 값에 따라 완료 여부를 표시 -->
                                     <form action="" method="POST">
                                         <input type="hidden" name="task_no" value="<?php echo $data['task_no'] ?>">
                                         <?php if ($data['is_com'] == '1') { ?>

@@ -117,7 +117,7 @@ textarea
     display: inline-block;
     font-size: 1rem;
     vertical-align: middle;
-
+    outline: none;
 }
 
 #memo_label{

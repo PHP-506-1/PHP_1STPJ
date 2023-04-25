@@ -70,15 +70,15 @@ if ($http_method === "POST") {
                 <ul>
                     <li>
                         <label for="start_time">시작시간 </label>
-                        <input type="time" name="start_time" reqired>
+                        <input type="time" name="start_time" required>
                     </li>
                     <li>
                         <label for="end_time">종료시간 </label>
-                        <input type="time" name="end_time" reqired>
+                        <input type="time" name="end_time" required>
                     </li>
                     <li>
                         <label for="category">카테고리
-                            <select name="category_no" reqired>
+                            <select name="category_no" required>
                                 <option value=1>독서</option>
                                 <option value=2>운동</option>
                                 <option value=3>공부</option>
@@ -101,7 +101,7 @@ if ($http_method === "POST") {
                     </li>
                     <li>
                         <label for="task_title">제목 </label>
-                        <input type="text" name="task_title" id="title" reqired>
+                        <input type="text" name="task_title" id="title" required>
                     </li>
                     <li>
                         <label for="task_memo">메모 </label>

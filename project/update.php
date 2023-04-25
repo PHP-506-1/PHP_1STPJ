@@ -119,7 +119,7 @@ else {
                     </li>
                     <li>
                         <label for="memo" id="memo_label">메모 </label>
-                        <textarea name="taks_memo" id="memo" cols="30" rows="10" value="<?php echo $result_info["task_memo"] ?>"></textarea>
+                        <textarea name="task_memo" id="memo" cols="30" rows="10" value="<?php echo $result_info["task_memo"] ?>"></textarea>
                     </li>
                 </ul>
             </div>

@@ -108,8 +108,9 @@ textarea
     border: none;
     background: transparent;
     display: inline-block;
-    font-size: 1rem;
+    font-size: large;
     vertical-align: middle;
+    color: #605E61;
 }
 
 textarea:focus

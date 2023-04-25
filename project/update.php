@@ -88,23 +88,23 @@ else {
                         <!-- select로 카테고리 값 선택 -->
                         <label for="category">카테고리
                         <select name="category_no" required>
-                            <option value="1" <?php echo $result_info['category_no'] == '1' ? 'selected' : '' ?>>독서</option>
-                            <option value="2" <?php echo $result_info['category_no'] == '2' ? 'selected' : '' ?>>운동</option>
-                            <option value="3" <?php echo $result_info['category_no'] == '3' ? 'selected' : '' ?>>공부</option>
-                            <option value="4" <?php echo $result_info['category_no'] == '4' ? 'selected' : '' ?>>기상</option>
-                            <option value="5" <?php echo $result_info['category_no'] == '5' ? 'selected' : '' ?>>취미</option>
-                            <option value="6" <?php echo $result_info['category_no'] == '6' ? 'selected' : '' ?>>회의</option>
-                            <option value="7" <?php echo $result_info['category_no'] == '7' ? 'selected' : '' ?>>쇼핑</option>
-                            <option value="8" <?php echo $result_info['category_no'] == '8' ? 'selected' : '' ?>>요리</option>
-                            <option value="9" <?php echo $result_info['category_no'] == '9' ? 'selected' : '' ?>>청소</option>
-                            <option value="10" <?php echo $result_info['category_no'] == '10' ? 'selected' : '' ?>>친구</option>
-                            <option value="11" <?php echo $result_info['category_no'] == '11' ? 'selected' : '' ?>>가족</option>
-                            <option value="12" <?php echo $result_info['category_no'] == '12' ? 'selected' : '' ?>>여행</option>
-                            <option value="13" <?php echo $result_info['category_no'] == '13' ? 'selected' : '' ?>>영화</option>
-                            <option value="14" <?php echo $result_info['category_no'] == '14' ? 'selected' : '' ?>>휴식</option>
-                            <option value="15" <?php echo $result_info['category_no'] == '15' ? 'selected' : '' ?>>기타</option>
-                            <option value="16" <?php echo $result_info['category_no'] == '16' ? 'selected' : '' ?>>병원</option>
-                            <option value="17" <?php echo $result_info['category_no'] == '17' ? 'selected' : '' ?>>식사</option>
+                            <option value="1" <?php echo $result_info["category_name"] == '독서' ? 'selected' : '' ?>>독서</option>
+                            <option value="2" <?php echo $result_info["category_name"] == '운동' ? 'selected' : '' ?>>운동</option>
+                            <option value="3" <?php echo $result_info["category_name"] == '공부' ? 'selected' : '' ?>>공부</option>
+                            <option value="4" <?php echo $result_info["category_name"] == '기상' ? 'selected' : '' ?>>기상</option>
+                            <option value="5" <?php echo $result_info["category_name"] == '취미' ? 'selected' : '' ?>>취미</option>
+                            <option value="6" <?php echo $result_info["category_name"] == '회의' ? 'selected' : '' ?>>회의</option>
+                            <option value="7" <?php echo $result_info["category_name"] == '쇼핑' ? 'selected' : '' ?>>쇼핑</option>
+                            <option value="8" <?php echo $result_info["category_name"] == '요리' ? 'selected' : '' ?>>요리</option>
+                            <option value="9" <?php echo $result_info["category_name"] == '청소' ? 'selected' : '' ?>>청소</option>
+                            <option value="10" <?php echo $result_info["category_name"] == '친구' ? 'selected' : '' ?>>친구</option>
+                            <option value="11" <?php echo $result_info["category_name"] == '가족' ? 'selected' : '' ?>>가족</option>
+                            <option value="12" <?php echo $result_info["category_name"] == '여행' ? 'selected' : '' ?>>여행</option>
+                            <option value="13" <?php echo $result_info["category_name"] == '영화' ? 'selected' : '' ?>>영화</option>
+                            <option value="14" <?php echo $result_info["category_name"] == '휴식' ? 'selected' : '' ?>>휴식</option>
+                            <option value="15" <?php echo $result_info["category_name"] == '기타' ? 'selected' : '' ?>>기타</option>
+                            <option value="16" <?php echo $result_info["category_name"] == '병원' ? 'selected' : '' ?>>병원</option>
+                            <option value="17" <?php echo $result_info["category_name"] == '식사' ? 'selected' : '' ?>>식사</option>
                         </select>
                         </label>
                     </li>

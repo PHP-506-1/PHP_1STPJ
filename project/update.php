@@ -116,8 +116,8 @@ else {
                         <input type="checkbox" name="is_com" value="1" <?php echo $result_info['is_com'] == '1' ? 'checked' : '' ?> id="complete">
                     </li>
                     <li>
-                        <label for="memo">메모 </label>
-                        <input type="text" value="<?php echo $result_info["task_memo"] ?>" name="task_memo" id="memo">
+                    <label for="memo" id="memo_label">메모 </label>
+                    <textarea name="taks_memo" id="memo" cols="30" rows="10" value="<?php echo $result_info["task_memo"] ?>"></textarea>
                     </li>
                 </ul>
             </div>

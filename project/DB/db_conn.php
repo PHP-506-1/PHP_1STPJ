@@ -174,15 +174,15 @@ function select_task_info_no( &$param_no )
 //기상 값의 평균만을 가져오는 쿼리문
 function wake_up_fnc()
 {
-$sql1 = "SELECT floor(AVG(TIME_TO_SEC(start_time))) AS avg_start_time
+$sql1 = "SELECT floor(AVG(TIME_TO_SEC(start_time))) AS avg_start_time 
         FROM Task
         WHERE category_no = (SELECT category_no FROM Category WHERE category_name = '기상')
         AND task_date >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH) ";
 
     try 
     {
-        db_conn($conn);
-        $result1 = $conn->query($sql1);
+        db_conn($conn); // PDO object set(DB연결)
+        $result1 = $conn->query($sql1); //sql문 연결문
         $row1 = $result1->fetchAll();
     } 
     catch (Exception $e) 
@@ -196,6 +196,7 @@ $sql1 = "SELECT floor(AVG(TIME_TO_SEC(start_time))) AS avg_start_time
     }
     return $row1;
 }
+
 
 //월별 카테고리별 수행 횟수를 추출하는 함수
 function month_cnt()
@@ -230,7 +231,7 @@ $sql2 = " SELECT category_name, COUNT(category_name) AS num_count
     return $result2;
 }
 
-//월별 수행결과 물의 횟수를 가져오는 함수
+//월별 수행결과 횟수를 가져오는 함수 - 수행 결과를 1로 값을 받아서 1인 값들의 비율을 찾도록 하기 위함
 function value_avg_fnc()
 {
 $sql3 = "SELECT 

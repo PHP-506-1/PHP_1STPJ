@@ -61,7 +61,7 @@ $avg_fnc = value_avg_fnc();
     <link rel="apple-touch-icon" sizes="180x180" href="./SOURCE/favicon_io">
     <link rel="icon" type="image/png" sizes="32x32" href="./SOURCE/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./SOURCE/favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="./SOURCE/favicon_io/site.webmanifest">
+    <link rel="shortcut icon" href="./SOURCE/sun2.png">
     <!-- css -->
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/graph.css">
@@ -72,7 +72,7 @@ $avg_fnc = value_avg_fnc();
         <div class="top"></div>
         <div class="bottom">
 
-            <div id="slider">
+            <div id="slider"> 
                 <ul>
                     <li>
                         <div class="slider-container">

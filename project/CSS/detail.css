@@ -57,8 +57,6 @@ input[type="date"]
     margin-bottom: 70px;
 }
 
-#memo:nth-child("taks_memo")
-
 .sun
 {
     float:center;
@@ -105,22 +103,4 @@ input[type='date']:focus::before,
 input[trpe='date']:valid::before
 {
     display:none;
-}
-
-textarea
-{
-    width: 550px;
-    height: 100px;
-    resize: none;
-    border: none;
-    background: transparent;
-    display: inline-block;
-    font-size: 1rem;
-    vertical-align: middle;
-    outline: none;
-}
-
-#memo_label{
-    display: inline-block;
-    vertical-align: top;
 }

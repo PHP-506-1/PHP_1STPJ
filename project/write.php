@@ -26,11 +26,10 @@ if ($http_method === "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>작성페이지</title>
     <!-- favicon -->
-    <link rel="shortcut icon" href="./SOURCE/sun2.png">
-    <!-- <link rel="apple-touch-icon" sizes="180x180" href="./SOURCE/favicon_io">
+    <link rel="apple-touch-icon" sizes="180x180" href="./SOURCE/favicon_io">
     <link rel="icon" type="image/png" sizes="32x32" href="./SOURCE/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./SOURCE/favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="./SOURCE/favicon_io/site.webmanifest"> -->
+    <link rel="manifest" href="./SOURCE/favicon_io/site.webmanifest">
     <!-- css -->
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/detail.css">
@@ -40,11 +39,10 @@ if ($http_method === "POST") {
 
 <body>
     <div class="sidebox">
-        <div class="top">
-            <h1>미라클 모닝 <span>추천 루틴</span><h1>
-        </div>
+        <div class="top"></div>
         <div class="bottom">
             <div class="update">
+                <span>미라클 모닝 추천 루틴</span><br><br>
                 6:30 아침 기상 <br>
                 6:30~7:30 모닝 루틴 (1시간)<br><br>
                 - 요가 또는 스트레칭 15분<br>
@@ -108,8 +106,8 @@ if ($http_method === "POST") {
                         <input type="text" name="task_title" id="title" reqired>
                     </li>
                     <li>
-                        <label for="task_memo" id="memo_label">메모 </label>
-                        <textarea name="taks_memo" id="memo" cols="30" rows="10"></textarea>
+                        <label for="task_memo">메모 </label>
+                        <input type="text" name="task_memo" id="memo">
                     </li>
                 </ul>
             </div>

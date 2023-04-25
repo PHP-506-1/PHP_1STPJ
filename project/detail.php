@@ -59,11 +59,11 @@ $result_info = select_task_info_no($arr_get["task_no"]);
                     </li>
                     <li>
                         <label for="category">카테고리 </label>
-                        <input type="text" value="<?php echo $result_info["category_name"] ?>" readonly>
+                        <input type="text" value="<?php echo $result_info["category_name"] ?>" name="category_no" readonly>
                     </li>
                     <li>
                         <label for="title">제목 </label>
-                        <input type="text" value="<?php echo $result_info["task_title"] ?>" id="title" readonly>
+                        <input type="text" value="<?php echo $result_info["task_title"] ?>" name="task_title" id="title" readonly>
                     </li>
                     <li>
                         <!-- 수행여부가 1(완료)이면 체크된 버튼 표시, 0(미완료)이면 미체크된 버튼 표시 -->
@@ -78,7 +78,7 @@ $result_info = select_task_info_no($arr_get["task_no"]);
                     </li>
                     <li>
                         <label for="memo">메모 </label>
-                        <input type="text" value="<?php echo $result_info["task_memo"] ?>" id="memo" readonly>
+                        <input type="text" value="<?php echo $result_info["task_memo"] ?>" id="memo" name="task_memo" readonly>
                     </li>
                 </ul>
             </div>

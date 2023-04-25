@@ -119,7 +119,7 @@ else {
                     </li>
                     <li>
                         <label for="memo" id="memo_label">메모 </label>
-                        <input type="text" value="<?php echo $result_info["task_memo"] ?>" id="memo">
+                        <input type="text" value="<?php echo $result_info["task_memo"] ?>" name="task_memo" id="memo">
                     </li>
                 </ul>
             </div>

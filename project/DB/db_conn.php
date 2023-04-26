@@ -173,10 +173,10 @@ function select_task_info_no( &$param_no )
 	return $result[0]; // 조건을 PK로 걸어줘서, 리턴값이 1개만 있기 때문에 [0]을 적어줌.
 }
 
-//기상 값의 평균만을 가져오는 쿼리문
+//'기상' 값의 평균만을 가져오는 쿼리문 - sql문을 이용해서 카테고리가 기상인 데이터를 추출해서 그안에서 최근 1달간의 날짜의 횟수를 뽑아 낸다.
 function wake_up_fnc()
 {
-$sql1 = "SELECT floor(AVG(TIME_TO_SEC(start_time))) AS avg_start_time 
+$sql1 = " SELECT floor(AVG(TIME_TO_SEC(start_time))) AS avg_start_time 
         FROM Task
         WHERE category_no = (SELECT category_no FROM Category WHERE category_name = '기상')
         AND task_date >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH) ";
@@ -185,7 +185,7 @@ $sql1 = "SELECT floor(AVG(TIME_TO_SEC(start_time))) AS avg_start_time
     {
         db_conn($conn); // PDO object set(DB연결)
         $result1 = $conn->query($sql1); //sql문 연결문
-        $row1 = $result1->fetchAll();
+        $row1 = $result1->fetchAll(); // 전체 데이터의 레코드를 배열로 받아옵니다.
     } 
     catch (Exception $e) 
     {
@@ -200,7 +200,7 @@ $sql1 = "SELECT floor(AVG(TIME_TO_SEC(start_time))) AS avg_start_time
 }
 
 
-//월별 카테고리별 수행 횟수를 추출하는 함수
+//월별 카테고리별 수행 횟수를 추출하는 함수 - 최근 한달간 기상을 제외한 나머지 카테고리 수를 뽑아 오기 위한 쿼리문
 function month_cnt()
 {
 $sql2 = " SELECT category_name, COUNT(category_name) AS num_count

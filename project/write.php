@@ -3,7 +3,8 @@ define("DOC_ROOT", $_SERVER["DOCUMENT_ROOT"] . "/");
 define("URL_DB", DOC_ROOT . "project/DB/db_conn.php");
 include_once(URL_DB);
 
-// 입력한 데이터들을 받아와서 최종적으로 index페이지로 전송해 주도록 하는 구문
+// 입력한 데이터들을 받아와서 최종적으로 index페이지로 전송해 주도록 하는 구문 
+// - 현 구문은 SERVER라는 슈퍼글로벌 변수에 post, get등 어떤것으로 받을지를 선택하는 구문
 $http_method = $_SERVER["REQUEST_METHOD"];
 if ($http_method === "POST") {
     $arr_post = $_POST;
@@ -12,8 +13,7 @@ if ($http_method === "POST") {
     header("location:index.php");
     exit();
 }
-
-
+// 'header' 내장 함수를 가지고 최종적으로 index 페이지로 보내는 역활을 한다.
 
 ?>
 

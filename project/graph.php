@@ -7,7 +7,7 @@ include_once(URL_DB);
 db_conn($conn);
 
 
-
+// 글로벌 함수 인 SERVER를 사용해서 html에서 보내준 데이터를 어떤 방식으로 받아 오는지를 확인해주는 것을 if문을 사용해서 post방식으로 받아온다는 것을 정의
 $http_method = $_SERVER["REQUEST_METHOD"];
 if ($http_method === "POST") {
     $start_date = $_POST['start_date'];
@@ -16,17 +16,14 @@ if ($http_method === "POST") {
 
 
 // 최근 일주일간의 기상카테고리 시작시간 평균 구하는 쿼리
-
 $wake_up_result = wake_up_fnc();
 
 // 최근 한달간의 카테고리별 사용 횟수 구하는 쿼리
-
-
 $count_month_fnc = month_cnt();
 
 
 
-
+//수행율을 구하기 위한 쿼리문 을 불러오는 함수이다. 
 $avg_fnc = value_avg_fnc();
 // var_dump($result3);
 // $sql3 = " SELECT 

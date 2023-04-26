@@ -59,30 +59,33 @@ function db_conn( &$param_conn )
 	
 }
 
-// 전체 데이터 수 가져오기
+/// 전체 데이터 수 가져오기
 function total_data()
 {
 
+    //task 테이블의 전체 레코드 수를 가져오는 쿼리
     $sql = 'SELECT COUNT(*) FROM task';
-    $arr_prepare= array();
+    $arr_prepare = array();
 
-    
-    try 
-    {
+
+    try {
+        //DB 연결을 위해 db_conn()호출
         db_conn($conn);
+        //PDO prepare() method로 stmt준비
         $stmt = $conn->prepare($sql);
+        //prepare() 에서 작성한 쿼리문 실행
         $stmt->execute($arr_prepare);
+        // fetchColumn()으로 sql 결과에서 첫번째 컬럼값 반환
         $result_cnt = $stmt->fetchColumn();
-    } 
-    catch (Exception $e) 
-    {
+    } catch (Exception $e) {
+        //DB연결 실패시 예외 throw
         $conn = null;
-		throw new Exception( $e->getMessage() );
-    }
-    finally
-    {
+        throw new Exception($e->getMessage());
+    } finally {
+        //DB 연결 종료
         $conn = null;
     }
+    //전체 데이터 수 반환
     return $result_cnt;
 }
 
@@ -95,28 +98,28 @@ $total_data_count = total_data();
 function list_page($start_data_index, $page_data_count)
 {
 
+
+    // task table과 category table을 inner join하는 쿼리문
     $sql = 'SELECT t.*, c.category_name FROM task t, category c WHERE t.category_no = c.category_no ORDER BY task_no DESC LIMIT :page_data_count OFFSET :start_index';
 
-    
+
     try 
     {
         $stmt = db_conn($conn);
         $stmt = $conn->prepare($sql);
+        //쿼리에서 사용할 변수를 bindParam으로 할당
         $stmt->bindParam(':start_index', $start_data_index, PDO::PARAM_INT);
         $stmt->bindParam(':page_data_count', $page_data_count, PDO::PARAM_INT);
         $stmt->execute();
+        //fetchAll()로 모든 결과를 배열로 반환
         $task_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
     } 
-    catch (Exception $e) 
-    {
-        $conn = null;
-        throw new Exception($e ->getMessage());
-    }
-    finally
-    {
-        
+    catch (Exception $e) {
+
+
         $conn = null;
     }
+    // 조회된 데이터 반환
     return $task_data;
 
 }

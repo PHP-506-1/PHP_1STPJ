@@ -10,7 +10,8 @@ if ($http_method === "POST") {
     $arr_post = $_POST;
 
     $result_write = write_info($arr_post);
-    header("location:index.php");
+    $result_detail = select_task_info_no($result_write);
+    header("location:detail.php?task_no=".$result_detail["task_no"]);
     exit();
 }
 // 'header' 내장 함수를 가지고 최종적으로 index 페이지로 보내는 역활을 한다.

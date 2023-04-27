@@ -59,33 +59,30 @@ function db_conn( &$param_conn )
 	
 }
 
-/// 전체 데이터 수 가져오기
+// 전체 데이터 수 가져오기
 function total_data()
 {
 
-    //task 테이블의 전체 레코드 수를 가져오는 쿼리
     $sql = 'SELECT COUNT(*) FROM task';
-    $arr_prepare = array();
+    $arr_prepare= array();
 
-
-    try {
-        //DB 연결을 위해 db_conn()호출
+    
+    try 
+    {
         db_conn($conn);
-        //PDO prepare() method로 stmt준비
         $stmt = $conn->prepare($sql);
-        //prepare() 에서 작성한 쿼리문 실행
         $stmt->execute($arr_prepare);
-        // fetchColumn()으로 sql 결과에서 첫번째 컬럼값 반환
         $result_cnt = $stmt->fetchColumn();
-    } catch (Exception $e) {
-        //DB연결 실패시 예외 throw
+    } 
+    catch (Exception $e) 
+    {
         $conn = null;
-        throw new Exception($e->getMessage());
-    } finally {
-        //DB 연결 종료
+		throw new Exception( $e->getMessage() );
+    }
+    finally
+    {
         $conn = null;
     }
-    //전체 데이터 수 반환
     return $result_cnt;
 }
 
@@ -98,28 +95,28 @@ $total_data_count = total_data();
 function list_page($start_data_index, $page_data_count)
 {
 
+    $sql = 'SELECT t.*, c.category_name FROM task t, category c WHERE t.category_no = c.category_no ORDER BY is_com asc,task_no DESC LIMIT :page_data_count OFFSET :start_index';
 
-    // task table과 category table을 inner join하는 쿼리문
-    $sql = 'SELECT t.*, c.category_name FROM task t, category c WHERE t.category_no = c.category_no ORDER BY task_no DESC LIMIT :page_data_count OFFSET :start_index';
-
-
+    
     try 
     {
         $stmt = db_conn($conn);
         $stmt = $conn->prepare($sql);
-        //쿼리에서 사용할 변수를 bindParam으로 할당
         $stmt->bindParam(':start_index', $start_data_index, PDO::PARAM_INT);
         $stmt->bindParam(':page_data_count', $page_data_count, PDO::PARAM_INT);
         $stmt->execute();
-        //fetchAll()로 모든 결과를 배열로 반환
         $task_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
     } 
-    catch (Exception $e) {
-
-
+    catch (Exception $e) 
+    {
+        $conn = null;
+        throw new Exception($e ->getMessage());
+    }
+    finally
+    {
+        
         $conn = null;
     }
-    // 조회된 데이터 반환
     return $task_data;
 
 }
@@ -390,13 +387,14 @@ function write_info(&$param_arr)
 
 
         $db_conn = null;
+
         try 
         {
             db_conn($db_conn); //PDO object 셋
             $db_conn->beginTransaction(); //Transaction 시작 : 데이터를 변경하기(insert, update, delete) 때문에 일련의 연산이 완료되면 commit 실패시 rollback을 통해서 데이터를 관리 하게 시킨다. 
             $stmt = $db_conn->prepare( $sql ); //statement object 셋팅
             $stmt->execute( $arr_prepare ); //DB request
-            $result_cnt = $stmt->rowCount(); // 업데이트 되서 영향을 받은 행의 숫자를 가져온다.
+            $result_cnt = $db_conn->lastInsertId();
             $db_conn->commit();
             
         } 
@@ -409,6 +407,7 @@ function write_info(&$param_arr)
         {
             $db_conn = null;
         }
+        return $result_cnt;
 }
 
 

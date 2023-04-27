@@ -167,8 +167,8 @@ $avg_fnc = value_avg_fnc();
                         <div>
                             <tr>
                                 <td>
-                                    수행율: <?php foreach ($avg_fnc as $completion_ratio) {
-                                                echo $completion_ratio['completion_ratio'] * 100;
+                                    수행율: <?php foreach ($avg_fnc as $completion_ratio) { // foreach문을 이용해서 수행한 카테고리별 횟수를 불러 온다.
+                                                echo $completion_ratio['completion_ratio'] * 100;  //sql문의 수행 평균 값을 가지고와서 비율로 만들어 준다.
                                             } ?> %
                                 </td>
                                 <td>

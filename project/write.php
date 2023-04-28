@@ -63,7 +63,7 @@ if ($http_method === "POST") {
         <div class="title top">
             <form method="post" action="">
                 <label for="date_title"><img src="./source/sun.png">&nbsp;&nbsp;
-                <input type="date" name="task_date" data-placeholder=" 날짜를 선택해주세요." reqired>
+                <input type="date" name="task_date" data-placeholder=" 날짜를 선택해주세요." required>
                 </label>&nbsp;&nbsp;<img src="./source/sun.png">
         </div>
         <div class="bottom">

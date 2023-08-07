@@ -14,7 +14,7 @@ __신은영__ | 상세, 수정 페이지<br>
 __노수빈__ | 리스트 페이지<br>
 
 ## 개발환경
-__언어__ <img src="https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=php&logoColor=white"/><br>
+__언어__ <img src="https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=php&logoColor=white"/>8.2<br>
 __Data Base__  <img src="https://img.shields.io/badge/MariaDB-003545?style=flat-square&logo=mariaDB&logoColor=white"/><br>
 __View&Event__  <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white"/> <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white"/><br>
 
